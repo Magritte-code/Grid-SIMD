@@ -1,13 +1,11 @@
-# Grid [![Teamcity status](http://ci.cliath.ph.ed.ac.uk/app/rest/builds/aggregated/strob:(buildType:(affectedProject(id:Grid)),branch:name:develop)/statusIcon.svg)](http://ci.cliath.ph.ed.ac.uk/project.html?projectId=Grid&tab=projectOverview) [![Travis status](https://travis-ci.org/paboyle/Grid.svg?branch=develop)](https://travis-ci.org/paboyle/Grid)
+# Grid-SIMD
+---
+[![Travis status](https://travis-ci.org/paboyle/Grid.svg?branch=develop)](https://travis-ci.org/paboyle/Grid)
+---
 
-**Data parallel C++ mathematical object library.**
+Stripped-down version of the **Grid: Data parallel C++ mathematical object library** only containing the SIMD vectorisation tools.
 
 License: GPL v2.
-
-Last update June 2017.
-
-_Please do not send pull requests to the `master` branch which is reserved for releases._
-
 
 
 ### Description
@@ -32,7 +30,7 @@ for most programmers.
 The layout transformations are parametrised by the SIMD vector length. This adapts according to the architecture.
 Presently SSE4, ARM NEON (128 bits) AVX, AVX2, QPX (256 bits), IMCI and AVX512 (512 bits) targets are supported.
 
-These are presented as `vRealF`, `vRealD`, `vComplexF`, and `vComplexD` internal vector data types. 
+These are presented as `vRealF`, `vRealD`, `vComplexF`, and `vComplexD` internal vector data types.
 The corresponding scalar types are named `RealF`, `RealD`, `ComplexF` and `ComplexD`.
 
 MPI, OpenMP, and SIMD parallelism are present in the library.
@@ -49,7 +47,7 @@ GCC   v4.9.x (recommended)
 
 GCC   v6.3 and later
 
-### Important: 
+### Important:
 
 Some versions of GCC appear to have a bug under high optimisation (-O2, -O3).
 
@@ -65,7 +63,7 @@ _To help us tracking and solving more efficiently issues with Grid, please repor
 
 When you file an issue, please go though the following checklist:
 
-1. Check that the code is pointing to the `HEAD` of `develop` or any commit in `master` which is tagged with a version number. 
+1. Check that the code is pointing to the `HEAD` of `develop` or any commit in `master` which is tagged with a version number.
 2. Give a description of the target platform (CPU, network, compiler). Please give the full CPU part description, using for example `cat /proc/cpuinfo | grep 'model name' | uniq` (Linux) or `sysctl machdep.cpu.brand_string` (macOS) and the full output the `--version` option of your compiler.
 3. Give the exact `configure` command used.
 4. Attach `config.log`.
@@ -76,9 +74,9 @@ When you file an issue, please go though the following checklist:
 ### Required libraries
 Grid requires:
 
-[GMP](https://gmplib.org/), 
+[GMP](https://gmplib.org/),
 
-[MPFR](http://www.mpfr.org/) 
+[MPFR](http://www.mpfr.org/)
 
 Bootstrapping grid downloads and uses for internal dense matrix (non-QCD operations) the Eigen library.
 
@@ -86,7 +84,7 @@ Grid optionally uses:
 
 [HDF5](https://support.hdfgroup.org/HDF5/)  
 
-[LIME](http://usqcd-software.github.io/c-lime/) for ILDG and SciDAC file format support. 
+[LIME](http://usqcd-software.github.io/c-lime/) for ILDG and SciDAC file format support.
 
 [FFTW](http://www.fftw.org) either generic version or via the Intel MKL library.
 
@@ -224,11 +222,11 @@ If gmp and mpfr are NOT in standard places (/usr/) these flags may be needed:
                --with-gmp=<path>        \
                --with-mpfr=<path>       \
 ```
-where `<path>` is the UNIX prefix where GMP and MPFR are installed. 
+where `<path>` is the UNIX prefix where GMP and MPFR are installed.
 
-Knight's Landing with Intel Omnipath adapters with two adapters per node 
-presently performs better with use of more than one rank per node, using shared memory 
-for interior communication. This is the mpi3 communications implementation. 
+Knight's Landing with Intel Omnipath adapters with two adapters per node
+presently performs better with use of more than one rank per node, using shared memory
+for interior communication. This is the mpi3 communications implementation.
 We recommend four ranks per node for best performance, but optimum is local volume dependent.
 
 ``` bash
@@ -236,7 +234,7 @@ We recommend four ranks per node for best performance, but optimum is local volu
              --enable-simd=KNL        \
              --enable-comms=mpi3-auto \
              --enable-mkl             \
-             CC=icpc MPICXX=mpiicpc 
+             CC=icpc MPICXX=mpiicpc
 ```
 
 ### Build setup for Intel Haswell Xeon platform
@@ -257,7 +255,7 @@ If gmp and mpfr are NOT in standard places (/usr/) these flags may be needed:
                --with-gmp=<path>        \
                --with-mpfr=<path>       \
 ```
-where `<path>` is the UNIX prefix where GMP and MPFR are installed. 
+where `<path>` is the UNIX prefix where GMP and MPFR are installed.
 
 If you are working on a Cray machine that does not use the `mpiicpc` wrapper, please use:
 
@@ -268,7 +266,7 @@ If you are working on a Cray machine that does not use the `mpiicpc` wrapper, pl
              --enable-mkl             \
              CXX=CC CC=cc
 ```
-Since Dual socket nodes are commonplace, we recommend MPI-3 as the default with the use of 
+Since Dual socket nodes are commonplace, we recommend MPI-3 as the default with the use of
 one rank per socket. If using the Intel MPI library, threads should be pinned to NUMA domains using
 ```
         export I_MPI_PIN=1
@@ -293,7 +291,7 @@ If gmp and mpfr are NOT in standard places (/usr/) these flags may be needed:
                --with-gmp=<path>        \
                --with-mpfr=<path>       \
 ```
-where `<path>` is the UNIX prefix where GMP and MPFR are installed. 
+where `<path>` is the UNIX prefix where GMP and MPFR are installed.
 
 If you are working on a Cray machine that does not use the `mpiicpc` wrapper, please use:
 
@@ -304,16 +302,16 @@ If you are working on a Cray machine that does not use the `mpiicpc` wrapper, pl
              --enable-mkl             \
              CXX=CC CC=cc
 ```
-Since Dual socket nodes are commonplace, we recommend MPI-3 as the default with the use of 
+Since Dual socket nodes are commonplace, we recommend MPI-3 as the default with the use of
 one rank per socket. If using the Intel MPI library, threads should be pinned to NUMA domains using
-``` 
+```
         export I_MPI_PIN=1
 ```
-This is the default. 
+This is the default.
 
-#### Expected Skylake Gold 6148 dual socket (single prec, single node 20+20 cores) performance using NUMA MPI mapping): 
+#### Expected Skylake Gold 6148 dual socket (single prec, single node 20+20 cores) performance using NUMA MPI mapping):
 
-mpirun -n 2 benchmarks/Benchmark_dwf --grid 16.16.16.16 --mpi 2.1.1.1 --cacheblocking 2.2.2.2 --dslash-asm --shm 1024 --threads 18 
+mpirun -n 2 benchmarks/Benchmark_dwf --grid 16.16.16.16 --mpi 2.1.1.1 --cacheblocking 2.2.2.2 --dslash-asm --shm 1024 --threads 18
 
 TBA
 
@@ -325,7 +323,7 @@ So, even with a single socket node there is a quad-chip module. Dual socket node
 are common. Each chip within the module exposes a separate NUMA domain.
 There are four NUMA domains per socket and we recommend one MPI rank per NUMA domain.
 MPI-3 is recommended with the use of four ranks per socket,
-and 8 threads per rank. 
+and 8 threads per rank.
 
 The following configuration is recommended for the AMD EPYC platform.
 
@@ -333,7 +331,7 @@ The following configuration is recommended for the AMD EPYC platform.
 ../configure --enable-precision=double\
              --enable-simd=AVX2       \
              --enable-comms=mpi3 \
-             CXX=mpicxx 
+             CXX=mpicxx
 ```
 
 If gmp and mpfr are NOT in standard places (/usr/) these flags may be needed:
@@ -341,15 +339,15 @@ If gmp and mpfr are NOT in standard places (/usr/) these flags may be needed:
                --with-gmp=<path>        \
                --with-mpfr=<path>       \
 ```
-where `<path>` is the UNIX prefix where GMP and MPFR are installed. 
+where `<path>` is the UNIX prefix where GMP and MPFR are installed.
 
 Using MPICH and g++ v4.9.2, best performance can be obtained using explicit GOMP_CPU_AFFINITY flags for each MPI rank.
-This can be done by invoking MPI on a wrapper script omp_bind.sh to handle this. 
+This can be done by invoking MPI on a wrapper script omp_bind.sh to handle this.
 
 It is recommended to run 8 MPI ranks on a single dual socket AMD EPYC, with 8 threads per rank using MPI3 and
 shared memory to communicate within this node:
 
-mpirun -np 8 ./omp_bind.sh ./Benchmark_dwf --mpi 2.2.2.1 --dslash-unroll --threads 8 --grid 16.16.16.16 --cacheblocking 4.4.4.4 
+mpirun -np 8 ./omp_bind.sh ./Benchmark_dwf --mpi 2.2.2.1 --dslash-unroll --threads 8 --grid 16.16.16.16 --cacheblocking 4.4.4.4
 
 Where omp_bind.sh does the following:
 ```
@@ -374,7 +372,7 @@ $@
 
 Performance:
 
-#### Expected AMD EPYC 7601 dual socket (single prec, single node 32+32 cores) performance using NUMA MPI mapping): 
+#### Expected AMD EPYC 7601 dual socket (single prec, single node 32+32 cores) performance using NUMA MPI mapping):
 
 mpirun  -np 8 ./omp_bind.sh ./Benchmark_dwf --threads 8 --mpi 2.2.2.1 --dslash-unroll --grid 16.16.16.16 --cacheblocking 4.4.4.4
 
@@ -391,9 +389,9 @@ To be written...
 ### Build setup for laptops, other compilers, non-cluster builds
 
 Many versions of g++ and clang++ work with Grid, and involve merely replacing CXX (and MPICXX),
-and omit the enable-mkl flag. 
+and omit the enable-mkl flag.
 
-Single node builds are enabled with 
+Single node builds are enabled with
 ```
             --enable-comms=none
 ```
@@ -404,4 +402,3 @@ FFTW support that is not in the default search path may then enabled with
 ```
 
 BLAS will not be compiled in by default, and Lanczos will default to Eigen diagonalisation.
-
