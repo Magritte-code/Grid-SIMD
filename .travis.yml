@@ -1,13 +1,15 @@
 language: cpp
 
+compiler: clang
+
 addons:
     packages:
       - cmake
 
 before_install:
-  - export LD_LIBRARY_PATH=/usr/local/clang/lib:$LD_LIBRARY_PATH
+  # Link to OpenMP library for clang
+  - export LD_LIBRARY_PATH=$(if [[ $CC == "clang" ]]; then echo -n '/usr/local/clang/lib'; fi)
 
-compiler: clang
 #cache:
 #  directories:
 #    - clang
