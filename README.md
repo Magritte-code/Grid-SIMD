@@ -1,5 +1,5 @@
 # Grid-SIMD
----
+
 [![Travis status](https://travis-ci.org/Magritte-code/Grid-SIMD.svg?branch=master)](https://travis-ci.org/Magritte-code/Grid-SIMD.svg?branch=master)
 ---
 
