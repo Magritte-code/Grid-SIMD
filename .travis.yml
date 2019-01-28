@@ -3,6 +3,8 @@ language: cpp
 addons:
     packages:
       - cmake
+
+compiler: clang
 #cache:
 #  directories:
 #    - clang

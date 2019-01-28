@@ -1,6 +1,6 @@
 # Grid-SIMD
----
-[![Travis status](https://travis-ci.org/paboyle/Grid.svg?branch=develop)](https://travis-ci.org/paboyle/Grid)
+
+[![Travis status](https://travis-ci.org/Magritte-code/Grid-SIMD.svg?branch=master)](https://travis-ci.org/Magritte-code/Grid-SIMD.svg?branch=master)
 ---
 
 Stripped-down version of the **Grid: Data parallel C++ mathematical object library** only containing the SIMD vectorisation tools.
