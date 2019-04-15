@@ -3,7 +3,7 @@
 #include "GridSIMD.hpp"
 
 
-TEST_CASE ("Reading input with Python")
+TEST_CASE ("Some simple operations")
 {
 
   cout << "Hello!" << endl;
