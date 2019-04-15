@@ -2,19 +2,22 @@
 /* lib/Config.h.in.  Generated from configure.ac by autoheader.  */
 
 /* AVX intrinsics */
-#define AVX1 1
+/* #undef AVX1 */
 
 /* AVX2 intrinsics */
 /* #undef AVX2 */
 
 /* AVX512 intrinsics for Knights Landing */
-/* #undef AVX512 */
+#define AVX512 1
 
 /* AVX intrinsics with FMA3 */
 /* #undef AVXFMA */
 
 /* AVX intrinsics with FMA4 */
 /* #undef AVXFMA4 */
+
+/* vendor of C++ compiler that will compile the code */
+#define CXX_COMP_VENDOR "intel"
 
 /* generic vector code */
 /* #undef GEN */
@@ -43,6 +46,12 @@
 /* GRID_MPI3_SHMMMAP */
 /* #undef GRID_MPI3_SHMMMAP */
 
+/* GRID_MPI3_SHMOPEN */
+#define GRID_MPI3_SHMOPEN 1
+
+/* GRID_MPI3_SHM_NONE */
+/* #undef GRID_MPI3_SHM_NONE */
+
 /* First touch numa locality */
 /* #undef GRID_NUMA */
 
@@ -50,7 +59,7 @@
 #define GRID_SHM_PATH "/var/lib/hugetlbfs/global/pagesize-2MB/"
 
 /* version of g++ that will compile the code */
-#define GXX_VERSION "6.4.0"
+#define GXX_VERSION "18.0.1"
 
 /* define if the compiler supports basic C++11 syntax */
 /* #undef HAVE_CXX11 */
@@ -70,7 +79,28 @@
 #define HAVE_EXECINFO_H 1
 
 /* Define to 1 if you have the `FFTW' library */
-/* #undef HAVE_FFTW */
+#define HAVE_FFTW 1
+
+/* Define to 1 if you have the `gettimeofday' function. */
+#define HAVE_GETTIMEOFDAY 1
+
+/* Define to 1 if you have the `HDF5' library */
+#define HAVE_HDF5 1
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#define HAVE_INTTYPES_H 1
+
+/* Define to 1 if you have the `GMP' library */
+#define HAVE_LIBGMP 1
+
+/* Define to 1 if you have the `m' library (-lm). */
+#define HAVE_LIBM 1
+
+/* Define to 1 if you have the `MPFR' library */
+#define HAVE_LIBMPFR 1
+
+/* Define to 1 if you have the `LIBNUMA' library */
+#define HAVE_LIBNUMA 1
 
 /* Define to 1 if you have the `stdc++' library (-lstdc++). */
 #define HAVE_LIBSTDC__ 1
@@ -89,6 +119,9 @@
 
 /* Define to 1 if you have the <mm_malloc.h> header file. */
 #define HAVE_MM_MALLOC_H 1
+
+/* Define to 1 if you have MPI libs and headers. */
+#define HAVE_MPI 1
 
 /* Define to 1 if you have the <numaif.h> header file. */
 #define HAVE_NUMAIF_H 1
@@ -126,6 +159,27 @@
 /* ARMv8 NEON */
 /* #undef NEONV8 */
 
+/* Name of package */
+#define PACKAGE "Grid"
+
+/* Define to the address where bug reports for this package should be sent. */
+#define GRID_BUGREPORT "https://github.com/paboyle/Grid"
+
+/* Define to the full name of this package. */
+#define GRID_NAME "Grid"
+
+/* Define to the full name and version of this package. */
+#define GRID_STRING "Grid 0.7.0"
+
+/* Define to the one symbol short name of this package. */
+#define GRID_TARNAME "Grid"
+
+/* Define to the home page for this package. */
+#define GRID_URL ""
+
+/* Define to the version of this package. */
+#define GRID_VERSION "0.7.0"
+
 /* QPX intrinsics for BG/Q */
 /* #undef QPX */
 
@@ -135,6 +189,8 @@
 /* RNG_RANLUX */
 /* #undef RNG_RANLUX */
 
+/* RNG_SITMO */
+#define RNG_SITMO 1
 
 /* software conversion to fp16 */
 #define SFW_FP16 1
@@ -142,8 +198,11 @@
 /* SSE4 intrinsics */
 /* #undef SSE4 */
 
+/* Define to 1 if you have the ANSI C header files. */
+#define STDC_HEADERS 1
+
 /* compile ZMM test */
-/* #undef TEST_ZMM */
+#define TEST_ZMM 1
 
 /* TIMERS_OFF */
 /* #undef TIMERS_OFF */
@@ -151,6 +210,14 @@
 /* TIMERS_ON */
 #define TIMERS_ON 1
 
+/* use LAPACK */
+/* #undef USE_LAPACK */
+
+/* Define to 1 if you use the Intel MKL */
+/* #undef USE_MKL */
+
+/* Version number of package */
+#define VERSION "0.7.0"
 
 /* Define for Solaris 2.5.1 so the uint32_t typedef from <sys/synch.h>,
    <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the

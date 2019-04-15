@@ -5,7 +5,7 @@
 #include "GridSIMD.hpp"
 
 
-TEST_CASE ("Reading input with Python")
+TEST_CASE ("Some simple OpenMP parallelised operations")
 {
 
   cout << "Hello!" << endl;
