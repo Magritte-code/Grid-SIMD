@@ -16,24 +16,14 @@ if( OPENMP_FOUND )
 endif()
 
 # Create main lib (as advised in Catch docs, to speed up compilation)
-add_library (TestMain
-test_main.cpp)
+add_library (GridTestMain   test_main.cpp)
 
 # Create test executables
-add_executable (test_1_basic_ops.exe
-  test_1_basic_ops.cpp)
-target_link_libraries (test_1_basic_ops.exe
-  GridSIMD
-  TestMain)
+add_executable        (test_1_basic_ops.exe   test_1_basic_ops.cpp)
+target_link_libraries (test_1_basic_ops.exe   GridSIMD   GridTestMain)
 
-add_executable (test_2_OpenMP.exe
-test_2_OpenMP.cpp)
-target_link_libraries (test_2_OpenMP.exe
-  GridSIMD
-  TestMain)
+add_executable        (test_2_OpenMP.exe      test_2_OpenMP.cpp)
+target_link_libraries (test_2_OpenMP.exe      GridSIMD   GridTestMain)
 
-add_executable (test_3_consts.exe
-  test_3_consts.cpp)
-target_link_libraries (test_3_consts.exe
-  GridSIMD
-  TestMain)
+add_executable        (test_3_consts.exe      test_3_consts.cpp)
+target_link_libraries (test_3_consts.exe      GridSIMD   GridTestMain)
