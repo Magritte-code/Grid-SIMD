@@ -1,3 +1,7 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
 #include <omp.h>
 
 #include "catch.hpp"
@@ -43,8 +47,14 @@ TEST_CASE ("Some simple OpenMP parallelised operations")
 
   # pragma omp parallel
   {
+    vReal1 vec5 (2000);
+
+    vReal test = 58;
+
     long start =  (omp_get_thread_num()    * N) / omp_get_num_threads();
     long stop  = ((omp_get_thread_num()+1) * N) / omp_get_num_threads();
+
+    vec5.resize (800000);
 
     for (long n = start; n < stop; n++)
     {
