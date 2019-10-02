@@ -1,3 +1,7 @@
+#include <iostream>
+using std::cout;
+using std::endl;
+
 #include "catch.hpp"
 
 #include "GridSIMD.hpp"

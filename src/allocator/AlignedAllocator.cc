@@ -14,7 +14,7 @@ void *PointerCache::Insert(void *ptr,size_t bytes) {
 
   if (bytes < 4096 ) return ptr;
 
-#ifdef GRID_OMP
+#ifdef _OPENMP
   assert(omp_in_parallel()==0);
 #endif
 
